@@ -10,6 +10,7 @@ http://dengji.fangyi.cniotroot.cn/
 疫情出入登记系统（h5前端系统） 
 使用 vue + mint-UI 开发 
 分两部分： 1、外来人员只需直接通过二维码扫码进入，按要求填相关信息 2、管理员需要注册登陆，管理该管理员下的相关登记人员的信息、该管理员有专属自己的二维码、可以导出 excel 表功能等等
+前端最新源码（码云）：https://gitee.com/312575498.com/nconv2019
 后端源码：https://gitee.com/toidibin/killNCP
 ```
 
