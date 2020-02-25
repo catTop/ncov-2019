@@ -4,6 +4,9 @@ import Vue from 'vue';
 import axios from "axios";
 import * as util from '@/service/error.js'
 import cookie from 'js-cookie'
+import {
+  Indicator
+} from 'mint-ui';
 
 
 let config = {
@@ -19,10 +22,12 @@ const _axios = axios.create(config);
  * header添加jwt，内容为cookie里的jwt
  */
 _axios.interceptors.request.use(config => {
+  Indicator.open();
   const csrftoken = cookie.get('csrftoken')
   csrftoken && (config.headers['X-CSRFToken'] = csrftoken)
   return config
 }, error => {
+  Indicator.close();
   return Promise.reject(error)
 })
 
@@ -42,11 +47,13 @@ _axios.interceptors.request.use(config => {
  * 2.非200：在reject部分处理，具体方法在util.catchError
  */
 _axios.interceptors.response.use(response => {
+  Indicator.close();
   let {
     data
   } = response
   return Promise.resolve(data)
 }, (e) => {
+  Indicator.close();
   return util.catchError(e)
 } )
 
